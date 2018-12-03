@@ -1,28 +1,44 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RouterModule, Routes } from '@angular/router';
-import { EncomendaComponent } from './encomenda/encomenda.component';
+import { NgModule }             from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
+import { ComposeMessageComponent }  from './compose-message/compose-message.component';
+import { PageNotFoundComponent }    from './page-not-found/page-not-found.component';
 
-const routes: Routes = [
+import { AuthGuard }                          from './auth/auth.guard';
+import { SelectivePreloadingStrategyService } from './selective-preloading-strategy.service';
+
+const appRoutes: Routes = [
   {
-    path: 'encomenda', component: EncomendaComponent
-  }
-  
+    path: 'compose',
+    component: ComposeMessageComponent,
+    outlet: 'popup'
+  },
+  {
+    path: 'encomenda',
+    loadChildren: './encomenda/encomenda.module#EncomendaModule',
+    canLoad: [AuthGuard]
+  },
+  {
+    path: 'crisis-center',
+    loadChildren: './crisis-center/crisis-center.module#CrisisCenterModule',
+    data: { preload: true }
+  },
+  { path: '',   redirectTo: '/superheroes', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  declarations: [
-    EncomendaComponent
-  ],
   imports: [
-    CommonModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(
+      appRoutes,
+      {
+        enableTracing: false, // <-- debugging purposes only
+        preloadingStrategy: SelectivePreloadingStrategyService,
+      }
+    )
   ],
   exports: [
     RouterModule
-  ],
+  ]
 })
 export class AppRoutingModule { }
-
-
