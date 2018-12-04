@@ -1,40 +1,31 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
-import { Router } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
-import { AppComponent }            from './app.component';
-import { PageNotFoundComponent }   from './page-not-found/page-not-found.component';
-import { ComposeMessageComponent } from './compose-message/compose-message.component';
+/** Components */
+import { AppComponent } from './app.component';
+import { DimensaoComponent } from './dimensao/dimensao.component';
+import { ProdutoComponent } from './produto/produto.component';
 
-import { AppRoutingModule }        from './app-routing.module';
-import { HeroesModule }            from './heroes/heroes.module';
-import { AuthModule }              from './auth/auth.module';
-
+/** Services */
+import { DimensaoService } from './dimensao/dimensao.service';
 @NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HeroesModule,
-    AuthModule,
-    AppRoutingModule,
-  ],
-  declarations: [
-    AppComponent,
-    ComposeMessageComponent,
-    PageNotFoundComponent
-  ],
-  bootstrap: [ AppComponent ]
+   declarations: [
+      AppComponent,
+      routingComponents,
+      DimensaoComponent,
+      ProdutoComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule
+   ],
+   providers: [DimensaoService],
+   bootstrap: [
+      AppComponent
+   ]
 })
-export class AppModule {
-  // Diagnostic only: inspect router configuration
-  constructor(router: Router) {
-    // Use a custom replacer to display function names in the route configs
-    // const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
-
-    // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
-  }
-}
+export class AppModule { }

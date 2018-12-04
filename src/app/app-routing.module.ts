@@ -1,44 +1,18 @@
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ProdutoComponent } from './produto/produto.component';
+import { EncomendaComponent } from './encomenda/encomenda.component';
+import {DimensaoComponent} from './dimensao/dimensao.component';
 
-import { ComposeMessageComponent }  from './compose-message/compose-message.component';
-import { PageNotFoundComponent }    from './page-not-found/page-not-found.component';
-
-import { AuthGuard }                          from './auth/auth.guard';
-import { SelectivePreloadingStrategyService } from './selective-preloading-strategy.service';
-
-const appRoutes: Routes = [
-  {
-    path: 'compose',
-    component: ComposeMessageComponent,
-    outlet: 'popup'
-  },
-  {
-    path: 'encomenda',
-    loadChildren: './encomenda/encomenda.module#EncomendaModule',
-    canLoad: [AuthGuard]
-  },
-  {
-    path: 'crisis-center',
-    loadChildren: './crisis-center/crisis-center.module#CrisisCenterModule',
-    data: { preload: true }
-  },
-  { path: '',   redirectTo: '/superheroes', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+const routes: Routes = [
+  { path: 'produto', component: ProdutoComponent},
+  {path: 'encomenda', component: EncomendaComponent},
+  {path: 'dimensao', component: DimensaoComponent}
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      {
-        enableTracing: false, // <-- debugging purposes only
-        preloadingStrategy: SelectivePreloadingStrategyService,
-      }
-    )
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [ProdutoComponent, EncomendaComponent, DimensaoComponent];
