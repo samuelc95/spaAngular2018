@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-produto',
-  template: `
-    <p>
-      produto works!
-    </p>
-  `,
+  templateUrl: './produto.component.html' ,
   styles: []
 })
 export class ProdutoComponent implements OnInit {

@@ -1,4 +1,35 @@
-<ul *ngFor="let dim of dimensions">
-  <li>{{ dim.dimensionId }}; Comprimento: {{ dim.comprimento }}; Largura: {{ dim.depth }}; Altura: {{ dim.height }}</li>
-  
-  </ul>
+
+<h2>Listagem Dimensões</h2>
+<hr>
+  <table class="table table-bordered table-definition mb-5">
+    <thead class="table-primary ">
+        <tr>
+            <th>Comprimento</th>
+            <th>Profundidade</th>
+            <th>Altura</th>
+            <th>Edit</th>        
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let dim of dimensions">
+            <td>{{ dim.lenght }}</td>
+            <td>{{ dim.depth }}</td>
+            <td>{{ dim.height }}</td>
+            <td><button id="{{ dim.dimensionId }}" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
+            <td><button id="{{ dim.dimensionId }}" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
+            
+        </tr>
+        
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th colspan="4">
+                <button class="btn btn-primary float-right">Inserir Dimensão</button>
+                <!-- <button class="btn btn-default">Approve</button>
+                <button class="btn btn-default">Approve All</button>-->
+            </th>
+        </tr>
+    </tfoot>
+  </table>
