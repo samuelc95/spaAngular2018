@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import { Idimensao } from '../models/dimensao';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DimensaoService {
+  [x: string]: any;
   private WebApiIt1url = 'http://arqsi-1151111-1151112.azurewebsites.net/api/dimension';
   constructor(private http: HttpClient) { }
 
@@ -20,8 +22,21 @@ export class DimensaoService {
     return this.http.get(this.WebApiIt1url).pipe(map(this.extractData));
   }
 
-  private extractData(res: Response){
+  private extractData(res: Response) {
   return res || {};
+}
+
+addDimension(dimensao: Idimensao): Observable<Idimensao> {
+  return this.http.post<Idimensao>(this.WebApiIt1url, dimensao)
+    .pipe(catchError(this.handleError('addDimensao', dimensao)));
+}
+
+deleteDimension (id: number): Observable<{}> {
+  const url = `${this.WebApiIt1url}/${id}`; // DELETE api/heroes/42
+  return this.http.delete(url)
+    .pipe(
+      catchError(this.handleError('deleteDimensao'))
+    );
 }
 
 }
