@@ -26,17 +26,25 @@ export class DimensaoService {
   return res || {};
 }
 
-addDimension(dimensao: Idimensao): Observable<Idimensao> {
+getDimensaoId(id: Number): Observable<any> {
+  const url = `${this.WebApiIt1url}/${id}`;
+  return this.http.get(url).pipe(map(this.extractData));
+}
+
+addDimensao(dimensao: Idimensao): Observable<Idimensao> {
   return this.http.post<Idimensao>(this.WebApiIt1url, dimensao)
     .pipe(catchError(this.handleError('addDimensao', dimensao)));
 }
 
 deleteDimension (id: number): Observable<{}> {
+  console.log('delete dimension');
   const url = `${this.WebApiIt1url}/${id}`; // DELETE api/heroes/42
   return this.http.delete(url)
     .pipe(
-      catchError(this.handleError('deleteDimensao'))
-    );
+      )
+    ;
 }
+
+
 
 }

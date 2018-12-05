@@ -1,4 +1,4 @@
-import { Iproduto } from './../models/produto';
+import { Irestricao } from './../models/restricao';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -7,31 +7,30 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ProdutoService {
+export class RestricaoService {
   [x: string]: any;
-  private WebApiIt1url = 'http://arqsi-1151111-1151112.azurewebsites.net/api/produtos';
+  private WebApiIt1url = 'http://arqsi-1151111-1151112.azurewebsites.net/api/restriction';
 constructor(private http: HttpClient) { }
 
-
-getProdutos(): Observable<any> {
+getRestricoes(): Observable<any> {
   return this.http.get(this.WebApiIt1url).pipe(map(this.extractData));
 }
 private extractData(res: Response) {
   return res || {};
 }
 
-getProdutoId(id: Number): Observable<any> {
+getRestricaoId(id: Number): Observable<any> {
   const url = `${this.WebApiIt1url}/${id}`;
   return this.http.get(url).pipe(map(this.extractData));
 }
 
-addProduto(produto: Iproduto): Observable<Iproduto> {
-  return this.http.post<Iproduto>(this.WebApiIt1url, produto)
-    .pipe(catchError(this.handleError('addProduto', produto)));
+addRestricao(restricao: Irestricao): Observable<Irestricao> {
+  return this.http.post<Irestricao>(this.WebApiIt1url, restricao)
+    .pipe(catchError(this.handleError('addRestricao', restricao)));
 }
 
-deleteProduto (id: number): Observable<{}> {
-  console.log('delete produto');
+deleteRestricao(id: number): Observable<{}> {
+  console.log('delete prestricao');
   const url = `${this.WebApiIt1url}/${id}`; // DELETE api/heroes/42
   return this.http.delete(url)
     .pipe(
@@ -39,6 +38,4 @@ deleteProduto (id: number): Observable<{}> {
     ;
 }
 
-
 }
-

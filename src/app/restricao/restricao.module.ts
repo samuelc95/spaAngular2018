@@ -1,26 +1,22 @@
-
+import { RestricaoRoutes } from './restricao.routing';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { RestricaoComponent } from './restricao.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProdutoRoutes } from './produto.routing';
-import { ProdutoComponent } from './produto.component';
 import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    ProdutoRoutes,
+    RestricaoRoutes,
     HttpClientModule
   ],
-  declarations: [ProdutoComponent]
+  declarations: [RestricaoComponent]
 })
-export class ProdutoModule { }
+export class RestricaoModule { }

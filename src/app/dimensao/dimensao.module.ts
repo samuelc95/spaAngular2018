@@ -1,5 +1,5 @@
 import { BrowserModule, } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DimensaoRoutes } from './dimensao.routing';
@@ -13,6 +13,7 @@ import { DimensaoComponent } from './dimensao.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     DimensaoRoutes, HttpClientModule
   ],

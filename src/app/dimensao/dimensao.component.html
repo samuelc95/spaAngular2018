@@ -16,8 +16,8 @@
             <td>{{ dim.lenght }}</td>
             <td>{{ dim.depth }}</td>
             <td>{{ dim.height }}</td>
-            <td><form ng-app="ArqsIt3"><button *ng-submit="deleteDimensao(dim.dimensionId)" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></form></td>
-            <td><button id="{{ dim.dimensionId }}" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
+            <td><button  (click)="getDimensaoId(dim.dimensionId)" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
+            <td><button (click)="deleteDimensao(dim.dimensionId)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
             
         </tr>
         
@@ -26,10 +26,51 @@
         <tr>
             <th></th>
             <th colspan="4">
-                <button class="btn btn-primary float-right">Inserir Dimensão</button>
+                <button onclick="formDisplay(1)" class="btn btn-primary float-right">Inserir Dimensão</button>
                 <!-- <button class="btn btn-default">Approve</button>
                 <button class="btn btn-default">Approve All</button>-->
             </th>
         </tr>
     </tfoot>
   </table>
+
+  <div id="divForm" action="">
+        <div class="col-md-8 order-md-1">
+        <h3 class="mb-3">Inserir Dimensão</h3>
+
+    <form [formGroup]="regForm">
+      <div class="row">
+              <div class="col-md-5 mb-3">
+                <div class="form-group">
+                  <label>Altura</label>
+                  <input type="text" formControlName="altura" class="form-control" id="altura" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Inserir altura válida.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label>Largura</label>
+                  <input type="text" formControlName="largura" class="form-control" id="largura" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Inserir largura válida.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <div class="form-group">
+                  <label>Profundidade</label>
+                  <input type="text" formControlName="profundidade" class="form-control" id="profundidade" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Inserir profundidade válida.
+                  </div>
+                </div>
+              </div>
+      </div> 
+        <button (click)="addDimensao()" type="submit" class="btn btn-primary">Submit</button>
+                
+    </form>
+      {{regForm.value | json}}
+    </div>
+  </div>
