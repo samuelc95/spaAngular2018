@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Idimensao } from '../models/dimensao';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Idimensao } from '../interfaces/dimensao';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +32,14 @@ getDimensaoId(id: Number): Observable<any> {
 }
 
 addDimensao(dimensao: Idimensao): Observable<Idimensao> {
-  return this.http.post<Idimensao>(this.WebApiIt1url, dimensao)
-    .pipe(catchError(this.handleError('addDimensao', dimensao)));
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  console.log(dimensao);
+  const data = JSON.stringify(dimensao);
+  console.log(data);
+  return this.http.post<Idimensao>(this.WebApiIt1url, data, httpOptions)
+    .pipe();
 }
 
 deleteDimension (id: number): Observable<{}> {
@@ -44,7 +50,5 @@ deleteDimension (id: number): Observable<{}> {
       )
     ;
 }
-
-
 
 }

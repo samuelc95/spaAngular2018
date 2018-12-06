@@ -1,5 +1,5 @@
 import { ProdutoService } from './produto.service';
-import { Iproduto } from './../models/produto';
+import { Iproduto } from './../interfaces/produto';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
 
@@ -13,7 +13,8 @@ export class ProdutoComponent implements OnInit {
   public produto: Iproduto;
 
   regForm = new FormGroup({
-    nome: new FormControl()
+    nome: new FormControl(),
+    descricao: new FormControl()
   });
 
   constructor(private _produtoService: ProdutoService) { }
@@ -37,12 +38,17 @@ export class ProdutoComponent implements OnInit {
   }
 
   public addProduto(): void {
-    console.log(this.regForm.controls['profundidade'].value);
+    console.log(this.regForm.controls['nome'].value);
+    const produto = {} as Iproduto;
+    produto.nome = this.regForm.controls['nome'].value;
+    produto.descricao = this.regForm.controls['descricao'].value;
+    this._produtoService.addProduto(produto).subscribe();
+    this.regForm.reset();
     /** this._dimensaoService.addDimension(newDimensao).subscribe(data => { this.dimensions.push(newDimensao)} );*/
   }
 
   public deleteProduto(id): void {
-    this._produtoService.deleteProduton(id).subscribe();
+    this._produtoService.deleteProduto(id).subscribe();
   }
 
 }

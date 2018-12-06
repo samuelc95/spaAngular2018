@@ -1,8 +1,9 @@
-import { Idimensao } from './../models/dimensao';
+import { Idimensao } from './../interfaces/dimensao';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
 import { DimensaoService } from './dimensao.service';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-dimensao',
@@ -45,8 +46,15 @@ export class DimensaoComponent implements OnInit {
 
   public addDimensao(): void {
     console.log(this.regForm.controls['profundidade'].value);
+    const dimensao = {} as Idimensao;
+    dimensao.lenght = this.regForm.controls['largura'].value;
+    dimensao.height = this.regForm.controls['altura'].value;
+    dimensao.depth = this.regForm.controls['profundidade'].value;
+    this._dimensaoService.addDimensao(dimensao).subscribe();
+    this.regForm.reset();
     /** this._dimensaoService.addDimension(newDimensao).subscribe(data => { this.dimensions.push(newDimensao)} );*/
   }
+
 
   public deleteDimensao(id): void {
     this._dimensaoService.deleteDimension(id).subscribe();

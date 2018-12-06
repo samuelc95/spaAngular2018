@@ -1,4 +1,4 @@
-import { Irestricao } from './../models/restricao';
+import { Irestricao } from './../interfaces/restricao';
 import { RestricaoService } from './restricao.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
@@ -12,7 +12,12 @@ export class RestricaoComponent implements OnInit {
   public restricoes: Irestricao[];
   public restricao: Irestricao;
   regForm = new FormGroup({
-    lenghMin: new FormControl()
+    larguraMin: new FormControl(),
+    larguraMax: new FormControl(),
+    alturaMin: new FormControl(),
+    alturaMax: new FormControl(),
+    profundidadeMin: new FormControl(),
+    profundidadeMax: new FormControl()
   });
   constructor(private _restricaoService: RestricaoService) { }
 
@@ -35,7 +40,16 @@ export class RestricaoComponent implements OnInit {
   }
 
   public addRestricao(): void {
-    console.log(this.regForm.controls['profundidade'].value);
+    console.log(this.regForm.controls['alturaMin'].value);
+    const restricao = {} as Irestricao;
+    restricao.heightMin = this.regForm.controls['alturaMin'].value;
+    restricao.lenghtMin = this.regForm.controls['larguraMin'].value;
+    restricao.depthMin = this.regForm.controls['profundidadeMin'].value;
+    restricao.heightMax = this.regForm.controls['alturaMax'].value;
+    restricao.lenghtMax = this.regForm.controls['larguraMax'].value;
+    restricao.depthMax = this.regForm.controls['profundidadeMax'].value;
+    this._restricaoService.addRestricao(restricao).subscribe();
+    this.regForm.reset();
     /** this._dimensaoService.addDimension(newDimensao).subscribe(data => { this.dimensions.push(newDimensao)} );*/
   }
 

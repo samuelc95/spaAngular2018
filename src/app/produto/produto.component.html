@@ -39,27 +39,27 @@
         <div class="col-md-8 order-md-1">
         <h3 class="mb-3">Inserir Produto</h3>
 
-    <!--<form [formGroup]="regForm">
+    <form [formGroup]="regForm">
       <div class="row">
               <div class="col-md-5 mb-3">
                 <div class="form-group">
-                  <label>Altura</label>
-                  <input type="text" formControlName="altura" class="form-control" id="altura" placeholder="" required>
+                  <label>Nome</label>
+                  <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="" required>
                   <div class="invalid-feedback">
-                    Inserir altura válida.
+                    Inserir nome válido.
                   </div>
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <div class="form-group">
-                  <label>Largura</label>
-                  <input type="text" formControlName="largura" class="form-control" id="largura" placeholder="" required>
+                  <label>Descrição</label>
+                  <input type="text" formControlName="descricao" class="form-control" id="descricao" placeholder="" required>
                   <div class="invalid-feedback">
-                    Inserir largura válida.
+                    Inserir descricao válida.
                   </div>
                 </div>
               </div>
-              <div class="col-md-3 mb-3">
+              <!--<div class="col-md-3 mb-3">
                 <div class="form-group">
                   <label>Profundidade</label>
                   <input type="text" formControlName="profundidade" class="form-control" id="profundidade" placeholder="" required>
@@ -67,11 +67,11 @@
                     Inserir profundidade válida.
                   </div>
                 </div>
-              </div>
+              </div>-->
       </div> 
-        <button (click)="addDimensao()" type="submit" class="btn btn-primary">Submit</button>
+        <button (click)="addProduto()" type="submit" class="btn btn-primary">Submit</button>
                 
     </form>
-      {{regForm.value | json}}--> 
+      {{regForm.value | json}}
     </div>
   </div>

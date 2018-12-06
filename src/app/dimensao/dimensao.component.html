@@ -1,4 +1,5 @@
 
+
 <h2>Listagem Dimensões</h2>
 <hr>
   <table class="table table-bordered table-definition mb-5">
@@ -17,7 +18,7 @@
             <td>{{ dim.depth }}</td>
             <td>{{ dim.height }}</td>
             <td><button  (click)="getDimensaoId(dim.dimensionId)" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
-            <td><button (click)="deleteDimensao(dim.dimensionId)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
+            <td><button (click)="deleteDimensao(dim.dimensionId)" onclick="location.reload()" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
             
         </tr>
         
@@ -68,7 +69,7 @@
                 </div>
               </div>
       </div> 
-        <button (click)="addDimensao()" type="submit" class="btn btn-primary">Submit</button>
+        <button (click)="addDimensao()" onclick="formDisplay(3)" type="submit" class="btn btn-primary">Submit</button>
                 
     </form>
       {{regForm.value | json}}

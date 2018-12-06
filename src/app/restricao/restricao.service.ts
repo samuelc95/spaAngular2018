@@ -1,5 +1,5 @@
-import { Irestricao } from './../models/restricao';
-import { HttpClient } from '@angular/common/http';
+import { Irestricao } from './../interfaces/restricao';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -25,8 +25,14 @@ getRestricaoId(id: Number): Observable<any> {
 }
 
 addRestricao(restricao: Irestricao): Observable<Irestricao> {
-  return this.http.post<Irestricao>(this.WebApiIt1url, restricao)
-    .pipe(catchError(this.handleError('addRestricao', restricao)));
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  console.log(restricao);
+  const data = JSON.stringify(restricao);
+  console.log(data);
+  return this.http.post<Irestricao>(this.WebApiIt1url, data, httpOptions)
+    .pipe();
 }
 
 deleteRestricao(id: number): Observable<{}> {

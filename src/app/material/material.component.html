@@ -1,6 +1,5 @@
 
-
-<h2>Listagem Categorias</h2>
+<h2>Listagem Materiais</h2>
 <hr>
   <table class="table table-bordered table-definition mb-5">
     <thead class="table-primary ">
@@ -11,10 +10,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr  *ngFor="let cat of categorias">
-            <td>{{ cat.nome }}</td>
-            <td><button  (click)="getCategoriaId(cat.categoryId)" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
-            <td><button (click)="deleteCategoria(cat.categoryId)" onclick="location.reload()" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
+        <tr  *ngFor="let mat of materiais">
+            <td>{{ mat.nome }}</td>
+            
+            <td><button  (click)="getMaterialId(mat.materialId)" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
+            <td><button (click)="deleteMaterialo(mat.materialId)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
             
         </tr>
         
@@ -23,7 +23,7 @@
         <tr>
             <th></th>
             <th colspan="4">
-                <button onclick="formDisplay(1)" class="btn btn-primary float-right">Inserir Dimensão</button>
+                <button onclick="formDisplay(1)" class="btn btn-primary float-right">Inserir Produto</button>
                 <!-- <button class="btn btn-default">Approve</button>
                 <button class="btn btn-default">Approve All</button>-->
             </th>
@@ -31,23 +31,26 @@
     </tfoot>
   </table>
 
+
   <div id="divForm" action="">
         <div class="col-md-8 order-md-1">
-        <h3 class="mb-3">Inserir Categoria</h3>
+        <h3 class="mb-3">Inserir Material</h3>
 
     <form [formGroup]="regForm">
       <div class="row">
               <div class="col-md-5 mb-3">
                 <div class="form-group">
-                  <label>Nome</label>
+                  <label>Altura Minima</label>
                   <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="" required>
                   <div class="invalid-feedback">
                     Inserir nome válido.
                   </div>
                 </div>
               </div>
+             
       </div> 
-        <button (click)="addCategoria()" onclick="formDisplay(3)" type="submit" class="btn btn-primary">Submit</button>
+
+        <button (click)="addMaterial()" type="submit" class="btn btn-primary">Submit</button>
                 
     </form>
       {{regForm.value | json}}

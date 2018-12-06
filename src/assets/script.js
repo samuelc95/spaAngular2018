@@ -10,7 +10,7 @@
   
     if (a == 1) {
       document.getElementById("divForm").style.display = "block";
-    } else {
+    } else{
       document.getElementById("divForm").style.display = "none";
     }
       
