@@ -1,3 +1,4 @@
+import { AcabamentoComponent } from './acabamento/acabamento.component';
 import { MaterialComponent } from './material/material.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { RestricaoComponent } from './restricao/restricao.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'dimensao', component: DimensaoComponent},
   {path: 'restricao', component: RestricaoComponent},
   {path: 'categoria', component: CategoriaComponent},
-  {path: 'material', component: MaterialComponent}
+  {path: 'material', component: MaterialComponent},
+  {path: 'acabamento', component: AcabamentoComponent}
 ];
 
 @NgModule({
@@ -22,4 +24,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = [ProdutoComponent, EncomendaComponent, DimensaoComponent, RestricaoComponent,
-                                  MaterialComponent, CategoriaComponent];
+                                  MaterialComponent, CategoriaComponent, AcabamentoComponent];

@@ -1,3 +1,4 @@
-export class Encomenda {
+export class Iencomenda {
     _id: string;
+    itens: [];
 }

@@ -1,3 +1,8 @@
+import { MaterialService } from './material/material.service';
+import { ProdutoService } from './produto/produto.service';
+import { AcabamentoComponent } from './acabamento/acabamento.component';
+
+import { MaterialComponent } from './material/material.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +20,9 @@ import { ProdutoComponent } from './produto/produto.component';
 import { DimensaoService } from './dimensao/dimensao.service';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { RestricaoComponent } from './restricao/restricao.component';
+import { CategoriaService } from './categoria/categoria.service';
+import { RestricaoService } from './restricao/restricao.service';
+import {AcabamentoService} from './acabamento/acabamento.service';
 @NgModule({
    declarations: [
       AppComponent,
@@ -22,7 +30,9 @@ import { RestricaoComponent } from './restricao/restricao.component';
       DimensaoComponent,
       ProdutoComponent,
       CategoriaComponent,
-      RestricaoComponent
+      RestricaoComponent,
+      MaterialComponent,
+      AcabamentoComponent
    ],
    imports: [
       BrowserModule,
@@ -32,7 +42,12 @@ import { RestricaoComponent } from './restricao/restricao.component';
       ReactiveFormsModule
    ],
    providers: [
-      DimensaoService
+      DimensaoService,
+      CategoriaService,
+      RestricaoService,
+      ProdutoService,
+      MaterialService,
+      AcabamentoService
    ],
    bootstrap: [
       AppComponent

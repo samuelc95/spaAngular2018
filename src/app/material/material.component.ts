@@ -18,17 +18,17 @@ export class MaterialComponent implements OnInit {
   constructor(private _materialService: MaterialService) { }
 
   ngOnInit() {
-    this.getRestricoes();
+    this.getMateriais();
   }
 
-  private getRestricoes(): void {
+  private getMateriais(): void {
     this._materialService.getMateriais().subscribe(data => {
     console.log(data);
     this.materiais = data;
     });
   }
 
-  public getRestricaoId(id: Number): void {
+  public getMaterialId(id: Number): void {
     this._materialService.getMaterialId(id).subscribe(data => {
       console.log(data);
       this.material = data;
