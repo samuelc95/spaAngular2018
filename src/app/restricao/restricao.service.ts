@@ -44,4 +44,16 @@ deleteRestricao(id: number): Observable<{}> {
     ;
 }
 
+updateRestricao (restricao: Irestricao, id: number): Observable<Irestricao> {
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  const materialJson = JSON.stringify(restricao);
+
+  const url = `${this.WebApiIt1url}/${id}`;
+  return this.http.put<Irestricao>(url, restricao, httpOptions)
+    .pipe( );
+
+}
+
 }

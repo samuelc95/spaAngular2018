@@ -11,8 +11,13 @@ import { FormControl, FormGroup, FormBuilder, Validator, Validators } from '@ang
 export class AcabamentoComponent implements OnInit {
   public acabamentos: Iacabamento[];
   public acabamento: Iacabamento;
+
   regForm = new FormGroup({
     nome: new FormControl(),
+  });
+
+  editForm = new FormGroup({
+    nome: new FormControl()
   });
   constructor(private _acabamentoService: AcabamentoService) { }
 
@@ -45,6 +50,15 @@ export class AcabamentoComponent implements OnInit {
 
   public deleteAcabamento(id): void {
     this._acabamentoService.deleteAcabamento(id).subscribe();
+  }
+
+  public editAcabamento(idAcab : number){
+    const acabamento = {} as Iacabamento;
+    acabamento.nome = this.editForm.controls['nome'].value;
+   
+    console.log('material editado ' +JSON.stringify(acabamento));
+    this._acabamentoService.updateAcabamento(acabamento, idAcab).subscribe();
+    this.editForm.reset();
   }
 
 }

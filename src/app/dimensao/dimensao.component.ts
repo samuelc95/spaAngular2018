@@ -22,6 +22,12 @@ export class DimensaoComponent implements OnInit {
     altura: new FormControl()
   });
 
+  private editForm = new FormGroup({
+    profundidade: new FormControl(),
+    largura: new FormControl(),
+    altura: new FormControl()
+  });
+
 
 
   constructor(private _dimensaoService: DimensaoService) { }
@@ -39,7 +45,7 @@ export class DimensaoComponent implements OnInit {
 
   public getDimensaoId(id: Number): void {
     this._dimensaoService.getDimensaoId(id).subscribe(data => {
-      console.log(data);
+      console.log('iD----> ' +data);
       this.dimensao = data;
     });
   }
@@ -58,6 +64,18 @@ export class DimensaoComponent implements OnInit {
 
   public deleteDimensao(id): void {
     this._dimensaoService.deleteDimension(id).subscribe();
+  }
+
+  
+  public editDimensao(idDim : number){
+    const dimensao = {} as Idimensao;
+    dimensao.lenght = this.editForm.controls['largura'].value;
+    dimensao.height = this.editForm.controls['altura'].value;
+    dimensao.depth = this.editForm.controls['profundidade'].value;
+   
+    console.log('material editado ' +JSON.stringify(dimensao));
+    this._dimensaoService.updateDimensao(dimensao, idDim).subscribe();
+    this.editForm.reset();
   }
 
 }

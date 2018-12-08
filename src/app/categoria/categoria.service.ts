@@ -46,4 +46,16 @@ export class CategoriaService {
       ;
   }
 
+  updateCategoria (categoria: Icategoria, id: number): Observable<Icategoria> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    const categoriaJson = JSON.stringify(categoria);
+  
+    const url = `${this.WebApiIt1url}/${id}`;
+    return this.http.put<Icategoria>(url, categoria, httpOptions)
+      .pipe( );
+  
+  }
+
 }

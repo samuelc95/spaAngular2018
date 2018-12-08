@@ -17,8 +17,7 @@ export class MaterialComponent implements OnInit {
   });
 
   editForm = new FormGroup({
-    nome: new FormControl(),
-    materialId: new FormControl()
+    nome: new FormControl()
   });
   constructor(private _materialService: MaterialService) { }
 

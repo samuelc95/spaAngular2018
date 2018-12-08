@@ -19,6 +19,16 @@ export class RestricaoComponent implements OnInit {
     profundidadeMin: new FormControl(),
     profundidadeMax: new FormControl()
   });
+
+  editForm = new FormGroup({
+    larguraMin: new FormControl(),
+    larguraMax: new FormControl(),
+    alturaMin: new FormControl(),
+    alturaMax: new FormControl(),
+    profundidadeMin: new FormControl(),
+    profundidadeMax: new FormControl()
+  });
+
   constructor(private _restricaoService: RestricaoService) { }
 
   ngOnInit() {
@@ -57,4 +67,17 @@ export class RestricaoComponent implements OnInit {
     this._restricaoService.deleteRestricao(id).subscribe();
   }
 
+  public editRestricao(idRes : number){
+    const restricao = {} as Irestricao;
+    restricao.heightMin = this.editForm.controls['alturaMin'].value;
+    restricao.lenghtMin = this.editForm.controls['larguraMin'].value;
+    restricao.depthMin = this.editForm.controls['profundidadeMin'].value;
+    restricao.heightMax = this.editForm.controls['alturaMax'].value;
+    restricao.lenghtMax = this.editForm.controls['larguraMax'].value;
+    restricao.depthMax = this.editForm.controls['profundidadeMax'].value;
+   
+    console.log('material editado ' +JSON.stringify(restricao));
+    this._restricaoService.updateRestricao(restricao, idRes).subscribe();
+    this.editForm.reset();
+  }
 }

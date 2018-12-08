@@ -17,6 +17,10 @@ export class CategoriaComponent implements OnInit {
     nome: new FormControl()
   });
 
+  editForm = new FormGroup({
+    nome: new FormControl()
+  });
+
   constructor(private _categoriaService: CategoriaService) { }
 
   ngOnInit() {
@@ -50,4 +54,15 @@ public addCategoria(): void {
 public deleteCategoria(id): void {
   this._categoriaService.deleteCategoria(id).subscribe();
 }
+
+
+public editCategoria(idMat : number){
+  const categoria = {} as Icategoria;
+  categoria.nome = this.editForm.controls['nome'].value;
+ 
+  console.log('material editado ' +JSON.stringify(categoria));
+  this._categoriaService.updateCategoria(categoria, idMat).subscribe();
+  this.editForm.reset();
+}
+
 }

@@ -27,6 +27,7 @@ export class DimensaoService {
 }
 
 getDimensaoId(id: Number): Observable<any> {
+  
   const url = `${this.WebApiIt1url}/${id}`;
   return this.http.get(url).pipe(map(this.extractData));
 }
@@ -49,6 +50,18 @@ deleteDimension (id: number): Observable<{}> {
     .pipe(
       )
     ;
+}
+
+updateDimensao(dimensao: Idimensao, id: number): Observable<Idimensao> {
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  const materialJson = JSON.stringify(dimensao);
+
+  const url = `${this.WebApiIt1url}/${id}`;
+  return this.http.put<Idimensao>(url, dimensao, httpOptions)
+    .pipe( );
+
 }
 
 }

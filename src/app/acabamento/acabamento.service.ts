@@ -44,4 +44,16 @@ deleteAcabamento(id: number): Observable<{}> {
     ;
 }
 
+updateAcabamento (acabamento: Iacabamento, id: number): Observable<Iacabamento> {
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  const materialJson = JSON.stringify(acabamento);
+
+  const url = `${this.WebApiIt1url}/${id}`;
+  return this.http.put<Iacabamento>(url, acabamento, httpOptions)
+    .pipe( );
+
+}
+
 }
