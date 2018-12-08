@@ -1,5 +1,5 @@
 
-<h2>Listagem Produtos</h2>
+<h2>Listagem Materiais/Acabamentos</h2>
 <hr>
   <table class="table table-bordered table-definition mb-5">
     <thead class="table-primary ">
@@ -12,11 +12,10 @@
     </thead>
     <tbody>
         <tr  *ngFor="let matacab of matsacabs">            
-           
-            <td >{{ getNomeAcabamento(matacab.acabamentoId) }}</td>
             <td >{{ getNomeMaterial(matacab.materialId) }}</td>
-            <td><button   class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
-            <td><button (click)="deleteMatAcab(matacab.material_AcabamentoID)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
+            <td >{{ getNomeAcabamento(matacab.acabamentoId) }}</td>
+            <td><button onClick="setTimeout(function(){location.reload();}, 500);" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
+            <td><button onClick="setTimeout(function(){location.reload();}, 500);" (click)="deleteMatAcab(matacab.material_AcabamentoID)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
             
         </tr>
         
@@ -42,20 +41,18 @@
       <div class="row">
               <div class="col-md-5 mb-3">
                 <div class="form-group">
-                  <label>Nome</label>
-                  <input type="text" formControlName="materialId" class="form-control" id="materialId" placeholder="" required>
-                  <div class="invalid-feedback">
-                    Inserir material válido.
-                  </div>
+                  <label>Material</label>
+                  <select class="form-control" formControlName="materialId" id="materialId" required>
+                    <option *ngFor="let mat of materiais" value="{{mat.materialId}}">{{mat.nome}}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <div class="form-group">
-                  <label>Descrição</label>
-                  <input type="text" formControlName="acabamentoId" class="form-control" id="acabamentoId" placeholder="" required>
-                  <div class="invalid-feedback">
-                    Inserir acabamento válido.
-                  </div>
+                  <label>Acabamentos</label>
+                  <select class="form-control" formControlName="acabamentoId" id="acabamentoId" required>
+                    <option *ngFor="let acab of acabamentos" value="{{acab.acabamentoId}}">{{acab.nome}}</option>
+                  </select>
                 </div>
               </div>
               <!--<div class="col-md-3 mb-3">
@@ -68,7 +65,7 @@
                 </div>
               </div>-->
       </div> 
-        <button (click)="addMatAcab()" type="submit" class="btn btn-primary">Submit</button>
+        <button onClick="setTimeout(function(){location.reload();}, 500);" (click)="addMatAcab()" type="submit" class="btn btn-primary">Submit</button>
                 
     </form>
       {{regForm.value | json}}

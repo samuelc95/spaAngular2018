@@ -12,10 +12,10 @@ export class ProdutoService {
   private WebApiIt1url = 'http://arqsi-1151111-1151112.azurewebsites.net/api/produtos';
 constructor(private http: HttpClient) { }
 
-
 getProdutos(): Observable<any> {
   return this.http.get(this.WebApiIt1url).pipe(map(this.extractData));
 }
+
 private extractData(res: Response) {
   return res || {};
 }
@@ -31,7 +31,7 @@ addProduto(produto: Iproduto): Observable<Iproduto> {
   };
   console.log(produto);
   const data = JSON.stringify(produto);
-  console.log(data);
+  console.log('prod finaaaal -> ' +data);
   return this.http.post<Iproduto>(this.WebApiIt1url, data, httpOptions)
     .pipe();
 }

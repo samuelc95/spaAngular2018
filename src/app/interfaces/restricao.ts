@@ -1,4 +1,4 @@
-export interface Irestricao {
+export class Irestricao {
     restrictionId: number;
     lenghtMax: number;
     heightMax: number;

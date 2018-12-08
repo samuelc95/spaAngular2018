@@ -1,4 +1,4 @@
-export interface Imaterial {
+export class Imaterial {
     materialId: number;
     nome: String;
 }

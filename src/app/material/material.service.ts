@@ -44,4 +44,16 @@ deleteMaterial(id: number): Observable<{}> {
     ;
 }
 
+updateMaterial (material: Imaterial, id: number): Observable<Imaterial> {
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  const materialJson = JSON.stringify(material);
+
+  const url = `${this.WebApiIt1url}/${id}`;
+  return this.http.put<Imaterial>(url, material, httpOptions)
+    .pipe( );
+
+}
+
 }

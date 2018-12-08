@@ -1,8 +1,8 @@
-export interface Iproduto {
+export class Iproduto {
     productId: number;
     nome: string;
     descricao: string;
-    materialacabamentoId: number;
+    material_AcabamentoID: number;
     dimensionId: number;
     categoryId: number;
     restrictionId: number;

@@ -1,4 +1,4 @@
-export interface Iacabamento {
+export class Iacabamento {
     acabamentoId: number;
     nome: String;
 }

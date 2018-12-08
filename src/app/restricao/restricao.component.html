@@ -22,8 +22,8 @@
             <td>{{ res.lenghtMax }}</td>
             <td>{{ res.depthMin }}</td>
             <td>{{ res.depthMax }}</td>
-            <td><button  (click)="getRestricaoId(res.restrictionId)" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
-            <td><button (click)="deleteRestricao(res.restrictionId)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
+            <td><button onClick="setTimeout(function(){location.reload();}, 500);" (click)="getRestricaoId(res.restrictionId)" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
+            <td><button onClick="setTimeout(function(){location.reload();}, 500);" (click)="deleteRestricao(res.restrictionId)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
             
         </tr>
         
@@ -104,7 +104,7 @@
           </div>
         </div>
 </div> 
-        <button (click)="addRestricao()" type="submit" class="btn btn-primary">Submit</button>
+        <button onClick="setTimeout(function(){location.reload();}, 500);"(click)="addRestricao()" type="submit" class="btn btn-primary">Submit</button>
                 
     </form>
       {{regForm.value | json}}

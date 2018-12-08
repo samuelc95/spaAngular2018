@@ -16,7 +16,7 @@ import { Location } from '@angular/common';
 
 export class AgregacaoComponent implements OnInit {
 
-  public agregacoes: Observable <IAgregacao[]>;
+  agregacoes: IAgregacao[];
   public produtos: Iproduto[];
   public agregacao: IAgregacao;
 
@@ -31,18 +31,30 @@ export class AgregacaoComponent implements OnInit {
   constructor(private _agregacaoService: AgregacaoService, private _produtoService: ProdutoService) { }
 
   ngOnInit() {
-   this.getAgregacoes();
-   this.getProdutos();
+    this.fillData()
+    .subscribe(result => {
+      this.getAgregacoes();
+    });
+    
   }
 
-  async getAgregacoes() {
-      this.agregacoes = this._agregacaoService.getAgregacoes();
+private fillData(): Observable<any>{
+    this.getProdutos();
+    return this._produtoService.getProdutos();
+}
+
+  private getAgregacoes() {
+    this._agregacaoService.getAgregacoes().subscribe(data => {
+      console.log(data);
+      this.agregacoes = data;
+    });
   }
 
-  private getProdutos() {
-     this._produtoService.getProdutos().subscribe(data => {
-       this.produtos = data;
-     });
+  getProdutos() {
+    this._produtoService.getProdutos().subscribe(data => {
+      console.log(data);
+      this.produtos = data;
+    });
   }
 
   getNome(id: number): String {

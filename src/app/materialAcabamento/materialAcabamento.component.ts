@@ -24,8 +24,7 @@ export class MaterialAcabamentoComponent implements OnInit {
   materiais: Imaterial[];
   public acabamentos: Iacabamento[];
 
-  haMateriais: Boolean;
-  haAcabamentos: Boolean;
+
 
   constructor(private _materialAcabamentoService: MaterialAcabamentoService,
     private _materialService: MaterialService,
@@ -48,14 +47,12 @@ private fillData(): Observable<any>{
     this._materialAcabamentoService.getMatsAcabs().subscribe(data => {
       console.log(data);
       this.matsacabs = data;
-      this.haAcabamentos = true;
     });
   }
   private getMateriais(): void {
     this._materialService.getMateriais().subscribe(data => {
       console.log(data);
       this.materiais = data;
-      this.haMateriais=true;
     });
   }
   private getAcabamentos(): void {

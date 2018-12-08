@@ -15,6 +15,11 @@ export class MaterialComponent implements OnInit {
   regForm = new FormGroup({
     nome: new FormControl(),
   });
+
+  editForm = new FormGroup({
+    nome: new FormControl(),
+    materialId: new FormControl()
+  });
   constructor(private _materialService: MaterialService) { }
 
   ngOnInit() {
@@ -33,6 +38,7 @@ export class MaterialComponent implements OnInit {
       console.log(data);
       this.material = data;
     });
+    //this.editForm.controls['nome'].patchValue(material.nome); 
   }
 
   public addMaterial(): void {
@@ -46,6 +52,15 @@ export class MaterialComponent implements OnInit {
 
   public deleteMaterial(id): void {
     this._materialService.deleteMaterial(id).subscribe();
+  }
+
+  public editMaterial(idMat : number){
+    const material = {} as Imaterial;
+    material.nome = this.editForm.controls['nome'].value;
+   
+    console.log('material editado ' +JSON.stringify(material));
+    this._materialService.updateMaterial(material, idMat).subscribe();
+    this.editForm.reset();
   }
 
 }
