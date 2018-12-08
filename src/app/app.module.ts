@@ -1,3 +1,5 @@
+import { AgregacaoService } from './agregacao/agregacao.service';
+import { AgregacaoComponent } from './agregacao/agregacao.component';
 import { MaterialService } from './material/material.service';
 import { ProdutoService } from './produto/produto.service';
 import { AcabamentoComponent } from './acabamento/acabamento.component';
@@ -32,7 +34,8 @@ import {AcabamentoService} from './acabamento/acabamento.service';
       CategoriaComponent,
       RestricaoComponent,
       MaterialComponent,
-      AcabamentoComponent
+      AcabamentoComponent,
+      AgregacaoComponent
    ],
    imports: [
       BrowserModule,
@@ -47,7 +50,8 @@ import {AcabamentoService} from './acabamento/acabamento.service';
       RestricaoService,
       ProdutoService,
       MaterialService,
-      AcabamentoService
+      AcabamentoService,
+      AgregacaoService
    ],
    bootstrap: [
       AppComponent

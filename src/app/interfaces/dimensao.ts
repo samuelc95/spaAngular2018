@@ -1,5 +1,5 @@
 export interface Idimensao {
-    dimensionId: string;
+    dimensionId: number;
     lenght: number;
     depth: number;
     height: number;

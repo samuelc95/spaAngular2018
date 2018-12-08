@@ -26,12 +26,12 @@ export class DimensaoComponent implements OnInit {
 
   constructor(private _dimensaoService: DimensaoService) { }
 
-  ngOnInit() {
-   this.getDimensoes();
+  async ngOnInit() {
+    this.getDimensoes();
   }
 
   private getDimensoes(): void {
-      this._dimensaoService.getDimensoes().subscribe(data => {
+    this._dimensaoService.getDimensoes().subscribe(data => {
       console.log(data);
       this.dimensions = data;
     });

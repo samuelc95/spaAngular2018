@@ -5,6 +5,7 @@
     <thead class="table-primary ">
         <tr>
             <th>Nome</th>
+            <th>Dimensão</th>
             <th>Material</th>
             <th>Category</th>
             <th>Edit</th>        
@@ -12,10 +13,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr  *ngFor="let prod of produtos">
+        <tr  *ngFor="let prod of produtos | async">
             <td>{{ prod.nome }}</td>
+            <td>{{ getDimensao(prod.dimensionId) }}</td>
             <td>{{ prod.material_AcabamentoID }}</td>
-            <td>{{ prod.categoryId }}</td>
+            <td>{{ getCategoria(prod.categoryId) }}</td>
             <td><button  (click)="getProdutoId(prod.productId)" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-pencil" ></span></button></td>
             <td><button (click)="deleteProduto(prod.productId)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-trash-o" ></span></button></td>
             

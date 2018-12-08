@@ -12,7 +12,7 @@ export class MaterialService {
   private WebApiIt1url = 'http://arqsi-1151111-1151112.azurewebsites.net/api/material';
 constructor(private http: HttpClient) { }
 
-getMateriais(): Observable<any> {
+ getMateriais(): Observable<any> {
   return this.http.get(this.WebApiIt1url).pipe(map(this.extractData));
 }
 private extractData(res: Response) {

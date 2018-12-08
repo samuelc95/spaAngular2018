@@ -1,4 +1,4 @@
 export interface Icategoria {
     categoryId: number;
-    nome: number;
+    nome: String;
 }
