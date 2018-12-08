@@ -1,4 +1,4 @@
 export interface Iacabamento {
     acabamentoId: number;
-    nome: number;
+    nome: String;
 }

@@ -1,4 +1,4 @@
 export interface Imaterial {
-    materialID: number;
-    nome: number;
+    materialId: number;
+    nome: String;
 }

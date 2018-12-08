@@ -1,3 +1,4 @@
+import { MaterialAcabamentoService } from './materialAcabamento/materialAcabamento.service';
 import { AgregacaoService } from './agregacao/agregacao.service';
 import { AgregacaoComponent } from './agregacao/agregacao.component';
 import { MaterialService } from './material/material.service';
@@ -25,6 +26,7 @@ import { RestricaoComponent } from './restricao/restricao.component';
 import { CategoriaService } from './categoria/categoria.service';
 import { RestricaoService } from './restricao/restricao.service';
 import {AcabamentoService} from './acabamento/acabamento.service';
+import { MaterialAcabamentoComponent } from './materialAcabamento/materialAcabamento.component';
 @NgModule({
    declarations: [
       AppComponent,
@@ -35,7 +37,8 @@ import {AcabamentoService} from './acabamento/acabamento.service';
       RestricaoComponent,
       MaterialComponent,
       AcabamentoComponent,
-      AgregacaoComponent
+      AgregacaoComponent,
+      MaterialAcabamentoComponent
    ],
    imports: [
       BrowserModule,
@@ -51,7 +54,8 @@ import {AcabamentoService} from './acabamento/acabamento.service';
       ProdutoService,
       MaterialService,
       AcabamentoService,
-      AgregacaoService
+      AgregacaoService,
+      MaterialAcabamentoService
    ],
    bootstrap: [
       AppComponent
