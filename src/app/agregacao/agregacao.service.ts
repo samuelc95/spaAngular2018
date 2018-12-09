@@ -51,4 +51,14 @@ deleteAgregacao (id: number): Observable<{}> {
     ;
 }
 
+updateAgregacao(agregacao: IAgregacao, id: number): Observable<IAgregacao> {
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  const url = `${this.WebApiIt1url}/${id}`;
+  return this.http.put<IAgregacao>(url, agregacao, httpOptions)
+    .pipe( );
+
+}
+
 }

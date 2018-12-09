@@ -26,6 +26,12 @@ export class AgregacaoComponent implements OnInit {
     optional: new FormControl()
   });
 
+  private editForm = new FormGroup({
+    productId1: new FormControl(),
+    productId2: new FormControl(),
+    optional: new FormControl()
+  });
+
 
 
   constructor(private _agregacaoService: AgregacaoService, private _produtoService: ProdutoService) { }
@@ -63,7 +69,7 @@ private fillData(): Observable<any>{
 
   public getAgregacaoId(id: Number): void {
     this._agregacaoService.getAgregacaoId(id).subscribe(data => {
-      console.log(data);
+      console.log('getIDF --> '+data);
       this.agregacao = data;
     });
   }
@@ -82,6 +88,17 @@ private fillData(): Observable<any>{
 
   public deleteAgregacao(id): void {
     this._agregacaoService.deleteAgregacao(id).subscribe();
+  }
+
+  public editAgregacao(idDim : number){
+    const agregacao = {} as IAgregacao;
+    agregacao.productId1 = this.editForm.controls['productId1'].value;
+    agregacao.productId2 = this.editForm.controls['productId2'].value;
+    agregacao.optional = this.editForm.controls['optional'].value;
+
+    console.log('material editado ' +JSON.stringify(agregacao));
+    this._agregacaoService.updateAgregacao(agregacao, idDim).subscribe();
+    this.editForm.reset();
   }
 
 }
