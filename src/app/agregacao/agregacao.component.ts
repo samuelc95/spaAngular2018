@@ -58,8 +58,9 @@ private fillData(): Observable<any>{
 
   getProdutos() {
     this._produtoService.getProdutos().subscribe(data => {
-      console.log(data);
+      console.log('produtos -> ' + data);
       this.produtos = data;
+      console.log('prod -> ' + this.produtos);
     });
   }
 

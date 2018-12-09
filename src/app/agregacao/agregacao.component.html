@@ -88,7 +88,7 @@
             <div class="form-group">
               <label>Produto 1</label>
               <select class="form-control" formControlName="productId1" id="productId1" required>
-                  
+                <option >{{getNome(agregacao.productId1)}}</option>
                   <option *ngFor="let prod of produtos" [attr.selected]="prod.nome == getNome(agregacao.productId1) ? true : null" [value]="prod.productId" >{{prod.nome}}</option>
               </select>
             </div>
@@ -97,7 +97,7 @@
             <div class="form-group">
               <label>Produto 2</label>
               <select class="form-control" formControlName="productId2" id="productId2" required>
-                  <option >{{getNome(agregacao.productId1)}}</option>
+                  <option >{{getNome(agregacao.productId2)}}</option>
                   <option *ngFor="let prod of produtos" [value]="prod.productId" >{{prod.nome}}</option>
                   
               </select>
@@ -116,7 +116,7 @@
             </div>
           </div>
         </div>
-        <button onClick="setTimeout(function(){location.reload();}, 500);" (click)="addAgregacao()" onclick="formDisplay(3)" type="submit" class="btn btn-primary">Submit</button>
+        <button onClick="setTimeout(function(){location.reload();}, 500);" (click)="editAgregacao(agregacao.itemId)" onclick="formDisplay(3)" type="submit" class="btn btn-primary">Submit</button>
   
       </form>
       {{editForm.value | json}}
